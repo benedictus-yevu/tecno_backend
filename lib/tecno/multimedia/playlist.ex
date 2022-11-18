@@ -6,6 +6,7 @@ defmodule Tecno.Multimedia.Playlist do
     field :name, :string
 
     timestamps()
+    belongs_to :user, Tecno.Accounts.User
   end
 
   @doc false

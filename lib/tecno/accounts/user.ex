@@ -4,7 +4,7 @@ defmodule Tecno.Accounts.User do
 
   schema "users" do
     field :email, :string
-
+    has_one :playlist, Tecno.Multimedia.Playlist
     timestamps()
   end
 

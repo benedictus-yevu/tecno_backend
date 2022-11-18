@@ -3,8 +3,8 @@ defmodule Tecno.Repo.Migrations.CreatePlaylists do
 
   def change do
     create table(:playlists) do
-      add :name, :string
-
+      add :data, :map, null: false, default: %{}
+      add :user_id, references(:users)
       timestamps()
     end
   end
