@@ -6,6 +6,7 @@ defmodule Tecno.Multimedia.Plan do
   schema "plans" do
     field :plan_name, :string
     has_many :users, Accounts.User
+    has_many :musics, Tecno.Multimedia.Music
     timestamps()
   end
 

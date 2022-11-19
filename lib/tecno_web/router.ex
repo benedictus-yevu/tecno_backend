@@ -14,16 +14,24 @@ defmodule TecnoWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug TecnoWeb.Auth.Pipeline
+  end
+
   scope "/api", TecnoWeb do
     pipe_through :api
+    post "/users/signup", ApiUserController, :create
+    post "/users/signin", UserController, :singin
+  end
+
+  scope "/api", TecnoWeb do
+    pipe_through([:api, :auth])
+    get "/musics", ApiMusicController, :index
     resources "/playlists", ApiPlaylistController
-    resources "/musics", ApiMusicController, only: [:index]
-    resources "/users", ApiUserController
   end
 
   scope "/", TecnoWeb do
     pipe_through :browser
-
     resources "/users", UserController
     resources "/musics", MusicController
   end

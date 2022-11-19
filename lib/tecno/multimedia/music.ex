@@ -4,6 +4,7 @@ defmodule Tecno.Multimedia.Music do
 
   schema "musics" do
     field :name, :string
+
     belongs_to :plan, Tecno.Multimedia.Music
     timestamps()
   end

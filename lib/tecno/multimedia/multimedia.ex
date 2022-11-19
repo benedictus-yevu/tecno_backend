@@ -17,6 +17,20 @@ defmodule Tecno.Multimedia do
       [%Plan{}, ...]
 
   """
+
+  ## fetching list of categories"
+  def fetch_plan(plan_name) do
+    # query =
+    #   from p in Plan,
+    #     order_by: p.plan_name,
+    #     select: {p.plan_name, p.id}
+
+    query = from p in Plan,where: [plan_name: ^plan_name], select: [:id]
+
+    Repo.all(query)
+  end
+
+  ##
   def list_plans do
     Repo.all(Plan)
   end
