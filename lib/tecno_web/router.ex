@@ -20,8 +20,9 @@ defmodule TecnoWeb.Router do
 
   scope "/api", TecnoWeb do
     pipe_through :api
-    post "/users/signup", ApiUserController, :create
-    post "/users/signin", UserController, :singin
+    post "/users/sign_up", SessionController, :create
+    post "/users/sign_in", SessionController, :login
+    post "/users/sign_out", SessionController, :delete
   end
 
   scope "/api", TecnoWeb do

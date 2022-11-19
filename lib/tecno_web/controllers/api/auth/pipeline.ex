@@ -1,10 +1,7 @@
 defmodule TecnoWeb.Auth.Pipeline do
-  use Guardian.Plug.Pipeline,
-    otp_app: :tecno,
-    module: TecnoWeb.Auth.Guardian,
-    error_handler: TecnoWeb.Auth.ErrorHandler
+  use Guardian.Plug.Pipeline, otp_app: :tecno
 
-  plug Guardian.Plug.VerifyHeader
+  plug Guardian.Plug.VerifyHeader, claims: %{"typ" => "access"}, realm: "Bearer"
   plug Guardian.Plug.EnsureAuthenticated
-  plug Guardian.Plug.LoadResource
+  plug Guardian.Plug.LoadResource, allow_blank: true
 end

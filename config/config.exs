@@ -50,7 +50,19 @@ config :phoenix, :json_library, Jason
 # Configure Guardian
 config :tecno, TecnoWeb.Auth.Guardian,
   issuer: "tecno",
-  secret_key: "gRl3A9kpQyW+ww8wJmeHV+mSNkPg6XCsyJhLX7qO1XjyNOQgoxCEa4o483I2e0Di"
+  secret_key: "gRl3A9kpQyW+ww8wJmeHV+mSNkPg6XCsyJhLX7qO1XjyNOQgoxCEa4o483I2e0Di",
+  ttl: {3, :days}
+
+config :tecno, TecnoWeb.Auth.Pipeline,
+  module: TecnoWeb.Guardian,
+  error_handler: TecnoWeb.Auth.ErrorHandler
+
+# config
+# config :guardian, Guardian,
+#   issuer: "Guardian",
+#   ttl: {30, :days},
+#   verify_issuer: true,
+#   serializer: "gRl3A9kpQyW+ww8wJmeHV+mSNkPg6XCsyJhLX7qO1XjyNOQgoxCEa4o483I2e0Di"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

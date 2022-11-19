@@ -20,8 +20,8 @@ defmodule TecnoWeb.MusicController do
   def create(conn, %{"music_plan" => plan}) do
     %{"name" => music_name, "plan_name" => plan_name} = plan
     # IO.inspect(plan)
-    [plan] = Multimedia.fetch_plan(plan_name)
-    IO.inspect(plan)
+    # [plan] = Multimedia.fetch_plan(plan_name)
+    # IO.inspect(plan)
 
     case Multimedia.fetch_plan(plan_name) do
       [plan] ->

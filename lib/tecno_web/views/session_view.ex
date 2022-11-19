@@ -1,4 +1,4 @@
-defmodule TecnoWeb.ApiUserView do
+defmodule TecnoWeb.SessionView do
   use TecnoWeb, :view
 
   # def render("index.json", %{playlists: playlists}) do
@@ -15,6 +15,14 @@ defmodule TecnoWeb.ApiUserView do
     %{
       email: user.email,
       token: token
+    }
+  end
+
+  def render("error.json", %{message: message}) do
+    %{
+      status: :not_found,
+      data: %{},
+      message: message
     }
   end
 
