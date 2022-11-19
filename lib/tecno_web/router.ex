@@ -14,10 +14,18 @@ defmodule TecnoWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/api", TecnoWeb do
+    pipe_through :api
+    resources "/playlists", ApiPlaylistController
+    resources "/musics", ApiMusicController, only: [:index]
+    resources "/users", ApiUserController
+  end
+
   scope "/", TecnoWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    resources "/users", UserController
+    resources "/musics", MusicController
   end
 
   # Other scopes may use custom stacks.

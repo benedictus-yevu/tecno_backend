@@ -3,9 +3,11 @@ defmodule Tecno.Repo.Migrations.CreatePlans do
 
   def change do
     create table(:plans) do
-      add :name, :string
+      add :plan_name, :string
 
       timestamps()
     end
+
+    create unique_index(:plans, [:plan_name])
   end
 end

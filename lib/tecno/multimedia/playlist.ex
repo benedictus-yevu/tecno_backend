@@ -3,16 +3,15 @@ defmodule Tecno.Multimedia.Playlist do
   import Ecto.Changeset
 
   schema "playlists" do
-    field :name, :string
-
-    timestamps()
+    field :data, :map
     belongs_to :user, Tecno.Accounts.User
+    timestamps()
   end
 
   @doc false
   def changeset(playlist, attrs) do
     playlist
-    |> cast(attrs, [:name])
-    |> validate_required([:name])
+    |> cast(attrs, [:data])
+    |> validate_required([:data])
   end
 end

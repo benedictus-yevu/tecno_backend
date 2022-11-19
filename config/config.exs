@@ -47,6 +47,11 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+# Configure Guardian
+config :tecno, TecnoWeb.Auth.Guardian,
+  issuer: "tecno",
+  secret_key: "gRl3A9kpQyW+ww8wJmeHV+mSNkPg6XCsyJhLX7qO1XjyNOQgoxCEa4o483I2e0Di"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
