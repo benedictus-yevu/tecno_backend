@@ -50,8 +50,7 @@ config :phoenix, :json_library, Jason
 # Configure Guardian
 config :tecno, TecnoWeb.Auth.Guardian,
   issuer: "tecno",
-  secret_key: "gRl3A9kpQyW+ww8wJmeHV+mSNkPg6XCsyJhLX7qO1XjyNOQgoxCEa4o483I2e0Di",
-  ttl: {3, :days}
+  secret_key: "GXxwODvcTy2SPcEDgrmE0Dcgct+uKwICbDn4dr8lODNYug5qB5hbo3ppBFQAghV9"
 
 config :tecno, TecnoWeb.Auth.Pipeline,
   module: TecnoWeb.Guardian,

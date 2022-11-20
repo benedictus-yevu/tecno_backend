@@ -1,9 +1,12 @@
 defmodule Tecno.Accounts do
+  # alias ElixirSense.Plugins.Ecto
+  import Ecto
+  alias Tecno.Multimedia
+
   @moduledoc """
   The Accounts context.
   """
 
-  import Ecto.Query, warn: false
   alias Tecno.Repo
 
   alias Tecno.Accounts.User
@@ -50,9 +53,19 @@ defmodule Tecno.Accounts do
 
   """
   def create_user(attrs \\ %{}) do
-    %User{}
-    |> User.changeset(attrs)
+    %{"email" => email, "password" => password, "plan_name" => plan_name} = attrs
+
+    [plan] = Multimedia.fetch_plan(plan_name)
+
+    plan
+    |> build_assoc(:users)
+    |> User.changeset(%{email: email, password: password})
     |> Repo.insert()
+
+    # plan
+    # |> Ecto.build_assoc(:users)
+    # |> User.changeset(%{email: email, password: password})
+    # |> Repo.insert()
   end
 
   @doc """

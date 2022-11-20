@@ -27,8 +27,8 @@ defmodule TecnoWeb.Router do
 
   scope "/api", TecnoWeb do
     pipe_through([:api, :auth])
-    get "/musics", ApiMusicController, :index
-    resources "/playlists", ApiPlaylistController
+    get "/musics/:email", MusicApiController, :index
+    resources "/playlists", PlaylistController
   end
 
   scope "/", TecnoWeb do
@@ -36,11 +36,6 @@ defmodule TecnoWeb.Router do
     resources "/users", UserController
     resources "/musics", MusicController
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", TecnoWeb do
-  #   pipe_through :api
-  # end
 
   # Enables the Swoosh mailbox preview in development.
   #
@@ -54,3 +49,6 @@ defmodule TecnoWeb.Router do
     end
   end
 end
+
+
+

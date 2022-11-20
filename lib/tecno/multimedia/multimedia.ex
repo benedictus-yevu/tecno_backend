@@ -25,7 +25,7 @@ defmodule Tecno.Multimedia do
     #     order_by: p.plan_name,
     #     select: {p.plan_name, p.id}
 
-    query = from p in Plan,where: [plan_name: ^plan_name], select: [:id]
+    query = from p in Plan, where: [plan_name: ^plan_name], select: [:id]
 
     Repo.all(query)
   end
