@@ -11,7 +11,7 @@ defmodule TecnoWeb.UserController do
     users = for {key, value} <- accounts, into: %{}, do: {key, value}
 
     # IO.inspect(users, label: "users")
-    render(conn, "index.html", users: users)
+    render(conn, "index.html", users: accounts)
   end
 
   def new(conn, _params) do
@@ -67,12 +67,12 @@ defmodule TecnoWeb.UserController do
     end
   end
 
-  # def delete(conn, %{"id" => id}) do
-  #   user = Accounts.get_user!(id)
-  #   {:ok, _user} = Accounts.delete_user(user)
+  def delete(conn, %{"id" => id}) do
+    user = Accounts.get_user!(id)
+    {:ok, _user} = Accounts.delete_user(user)
 
-  #   conn
-  #   |> put_flash(:info, "User deleted successfully.")
-  #   |> redirect(to: Routes.user_path(conn, :index))
-  # end
+    conn
+    |> put_flash(:info, "User deleted successfully.")
+    |> redirect(to: Routes.user_path(conn, :index))
+  end
 end

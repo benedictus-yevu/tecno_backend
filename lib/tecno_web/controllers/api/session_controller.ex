@@ -9,6 +9,8 @@ defmodule TecnoWeb.SessionController do
   # action_fallback TecnoWeb.FallbackController
 
   def create(conn, %{"user" => user_params}) do
+    IO.inspect(user_params)
+
     with {:ok, user} <- Accounts.create_user(user_params),
          {:ok, token, _claims} <- Guardian.encode_and_sign(user) do
       plan = GeneralQueries.get_user_plan(user.email)
