@@ -9,3 +9,9 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+# alias Tecno.Multimedia.Plan
+alias Tecno.Multimedia
+
+for plan <- ~w(Basic Gold) do
+  Multimedia.create_plan(%{plan_name: plan})
+end
